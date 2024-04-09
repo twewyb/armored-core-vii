@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://7tbfhxoio2ma"]
+
+[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_1q7n2"]
+[ext_resource type="Material" uid="uid://b0tr284j2hedj" path="res://emissive.tres" id="2_56612"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ge4f0"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jkcad"]
+
+[sub_resource type="Sky" id="Sky_p2wf3"]
+sky_material = SubResource("ProceduralSkyMaterial_jkcad")
+
+[sub_resource type="Environment" id="Environment_j1j3p"]
+background_mode = 2
+sky = SubResource("Sky_p2wf3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fu4to"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6a58o"]
+size = Vector2(50, 50)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lpgms"]
+size = Vector3(48.4746, 1, 56.9688)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55794, 22.6995)
+script = ExtResource("1_1q7n2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("BoxMesh_ge4f0")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.991009, 0.133796, 0, -0.133796, 0.991009, 0, 1.39266, 3.09961)
+environment = SubResource("Environment_j1j3p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_fu4to")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.679419, -0.533789, 0.503448, 0.0749265, 0.733014, 0.676074, -0.729915, -0.421616, 0.538019, 0, 7.01798, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("2_56612")
+mesh = SubResource("PlaneMesh_6a58o")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_lpgms")

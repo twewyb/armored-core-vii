@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://y1vkieoxxq5e"]
+
+[ext_resource type="PackedScene" uid="uid://doqb7y1qlil4" path="res://tetra.glb" id="1_d5rva"]
+[ext_resource type="Material" uid="uid://bvekcem84el0u" path="res://black.tres" id="2_bt470"]
+[ext_resource type="Material" uid="uid://b0tr284j2hedj" path="res://emissive.tres" id="3_sfebt"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_tbk86"]
+_surfaces = [{
+"aabb": AABB(-1.41421, -0.57735, -0.816497, 2.82843, 2.30941, 2.44949),
+"format": 34896613377,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 1, 0, 3, 0, 0, 0, 2, 0, 0, 0, 3, 0, 1, 0, 2, 0, 3, 0),
+"name": "black",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(255, 127, 254, 255, 85, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 255, 127, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_hsw87"]
+resource_name = "tetra_Cube_002"
+_surfaces = [{
+"aabb": AABB(-1.41421, -0.57735, -0.816497, 2.82843, 2.30941, 2.44949),
+"attribute_data": PackedByteArray(255, 159, 255, 127, 255, 95, 255, 191, 255, 223, 255, 63, 255, 159, 255, 127, 255, 95, 255, 63, 255, 95, 255, 191, 255, 159, 255, 127, 255, 95, 255, 63, 255, 159, 0, 0, 255, 95, 255, 63, 255, 31, 255, 127, 255, 159, 255, 255),
+"format": 34896613399,
+"index_count": 12,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 5, 0, 4, 0, 3, 0, 8, 0, 6, 0, 7, 0, 10, 0, 11, 0, 9, 0),
+"material": ExtResource("2_bt470"),
+"name": "black",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 12,
+"vertex_data": PackedByteArray(255, 127, 254, 255, 85, 85, 129, 92, 0, 0, 0, 0, 0, 0, 129, 92, 255, 127, 0, 0, 255, 255, 129, 92, 255, 127, 254, 255, 85, 85, 58, 246, 255, 255, 0, 0, 0, 0, 58, 246, 0, 0, 0, 0, 0, 0, 58, 246, 255, 127, 254, 255, 85, 85, 156, 244, 255, 255, 0, 0, 0, 0, 156, 244, 255, 127, 0, 0, 255, 255, 156, 244, 255, 255, 0, 0, 0, 0, 224, 62, 0, 0, 0, 0, 0, 0, 224, 62, 255, 127, 0, 0, 255, 255, 224, 62, 123, 195, 130, 188, 123, 195, 130, 188, 123, 195, 130, 188, 240, 186, 240, 186, 240, 186, 240, 186, 240, 186, 240, 186, 41, 22, 25, 36, 41, 22, 25, 36, 41, 22, 25, 36, 29, 16, 59, 160, 29, 16, 59, 160, 29, 16, 59, 160)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_tbk86")
+
+[sub_resource type="SphereMesh" id="SphereMesh_8gkkv"]
+
+[node name="mesh" instance=ExtResource("1_d5rva")]
+transform = Transform3D(0.578204, 0, 0, 0, 0.578204, 0, 0, 0, 0.578204, 0, 0, 0)
+
+[node name="tetra4" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(-0.076663, -0.0308718, -0.129293, 0.000208781, 0.149226, -0.0357552, 0.132927, -0.0180391, -0.0745108, -0.912797, 1, -0.527004)
+mesh = SubResource("ArrayMesh_hsw87")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_sfebt")
+
+[node name="tetra" parent="." index="1"]
+transform = Transform3D(0.6, 0, 0, 0, -0.597583, -0.0537955, 0, 0.0537955, -0.597583, 0, 1.4, 0)
+
+[node name="tetra3" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(-0.330186, 0.000401063, -0.000254183, 0.0003762, 0.113123, -0.310203, -0.000289703, -0.310203, -0.113124, 0, 2.30372, 0.14845)
+mesh = SubResource("ArrayMesh_hsw87")
+skeleton = NodePath("")
+
+[node name="tetra2" parent="." index="3" instance=ExtResource("1_d5rva")]
+transform = Transform3D(-0.926988, 0.00397367, -0.00155553, 0.000349709, 0.407523, 0.832616, 0.00425293, 0.832607, -0.407519, 0, -0.278442, -0.866349)
+
+[node name="tetra7" parent="." index="4" instance=ExtResource("1_d5rva")]
+transform = Transform3D(0.0858727, 0.407118, 0.222703, 0.0695828, -0.646088, 0.128493, 0.191518, 0.0521949, -0.14654, 1.19747, 0.925867, 0.0953236)
+
+[node name="tetra8" parent="." index="5" instance=ExtResource("1_d5rva")]
+transform = Transform3D(-0.0860023, -0.405237, -0.223074, 0.0693255, -0.646751, 0.127951, 0.191412, 0.0521649, -0.146569, -1.24949, 0.925867, 0.0953236)
+
+[node name="tetra5" type="MeshInstance3D" parent="." index="6"]
+transform = Transform3D(-0.15345, 0.000186389, -0.000118128, 0.000208781, 0.149226, -0.0357552, 7.1445e-05, -0.0357553, -0.149226, 0, 1, -1.05401)
+mesh = SubResource("ArrayMesh_hsw87")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_sfebt")
+
+[node name="tetra6" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(-0.0767868, 0.0310582, 0.129175, 0.000208781, 0.149226, -0.0357552, -0.132856, -0.0177162, -0.0747154, 0.912797, 1, -0.527004)
+mesh = SubResource("ArrayMesh_hsw87")
+skeleton = NodePath("")
+surface_material_override/0 = ExtResource("3_sfebt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(1.01226, 0, 0, 0, 1.01226, 0, 0, 0, 1.01226, 0, 0.603785, 0.0160166)
+mesh = SubResource("SphereMesh_8gkkv")
+surface_material_override/0 = ExtResource("3_sfebt")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bpqhfhqwskdvw"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_0c1x5"]
+radius = 1.5
+height = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yonnq"]
+albedo_color = Color(0.329412, 0.329412, 0.329412, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fatdt"]
+radius = 1.52769
+
+[node name="weakpoint" type="Area3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_0c1x5")
+surface_material_override/0 = SubResource("StandardMaterial3D_yonnq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999998, 0.00180174, -0.00112036, -0.00180063, 0.999998, 0.000985003, 0.00112214, -0.000982978, 0.999999, 0, 0, 0)
+shape = SubResource("SphereShape3D_fatdt")

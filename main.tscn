@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://b78nmuiuwcneo"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_8d3sd"]
+[ext_resource type="Script" path="res://PathFollow3D.gd" id="1_wdjvw"]
+[ext_resource type="Script" path="res://2Dmovement.gd" id="2_i7njg"]
+[ext_resource type="PackedScene" uid="uid://dmdr52go6p5sr" path="res://enemy.tscn" id="4_o171v"]
+
+[sub_resource type="Curve3D" id="Curve3D_fejj7"]
+_data = {
+"points": PackedVector3Array(0, 0, 16, 0, 0, -16, -32, 0, 0, -16, 0, 0, 16, 0, 0, 0, 0, -32, 0, 0, -16, 0, 0, 16, 32, 0, 0, 16, 0, 0, -16, 0, 0, 0, 0, 32, 0, 0, 16, 0, 0, -16, -32, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="BoxMesh" id="BoxMesh_nln7q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_prie6"]
+sky_top_color = Color(0.235294, 0.584314, 0.843137, 1)
+sky_horizon_color = Color(0.72549, 0.937255, 0.933333, 1)
+sky_curve = 0.160766
+ground_bottom_color = Color(0.2, 0.780392, 0.960784, 1)
+ground_horizon_color = Color(0.607843, 0.890196, 0.87451, 1)
+ground_curve = 0.0746426
+
+[sub_resource type="Sky" id="Sky_rkch6"]
+sky_material = SubResource("ProceduralSkyMaterial_prie6")
+
+[sub_resource type="Environment" id="Environment_kk6ey"]
+background_mode = 2
+background_color = Color(0, 0.619608, 0.737255, 1)
+sky = SubResource("Sky_rkch6")
+sky_rotation = Vector3(3.48787e-16, 3.48787e-16, -0.471239)
+ambient_light_color = Color(0.937255, 0.937255, 0.937255, 1)
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.01
+volumetric_fog_emission = Color(0.615686, 0.615686, 0.615686, 1)
+volumetric_fog_sky_affect = 0.437
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_8d3sd")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_fejj7")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.999979, 0, 0, 0, 0.999996, 0, 0, 0, 0.999979, -32, 0, 0)
+script = ExtResource("1_wdjvw")
+
+[node name="Camera3D" type="Camera3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(-4.37123e-08, 0, -1.00002, 0, 1, 0, 1.00002, 0, -4.37123e-08, 0, 0, 0)
+
+[node name="player" type="MeshInstance3D" parent="Path3D/PathFollow3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54683e-07, -1.24336, -3.53872)
+mesh = SubResource("BoxMesh_nln7q")
+script = ExtResource("2_i7njg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kk6ey")
+
+[node name="Enemy" parent="." instance=ExtResource("4_o171v")]

@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://qxwla0lq2col"]
+
+[ext_resource type="PackedScene" uid="uid://8tta4enuid0" path="res://character_controller.tscn" id="1_icwvb"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_15ch8"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3D.gd" id="3_tjfsr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3D_resource.gd" id="4_nuf45"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8h5tf"]
+sky_top_color = Color(0, 0.552941, 0.831373, 1)
+sky_horizon_color = Color(0.741176, 0.956863, 0.960784, 1)
+sky_curve = 0.344609
+ground_bottom_color = Color(0.219608, 0.603922, 0.807843, 1)
+ground_horizon_color = Color(0.584314, 0.890196, 1, 1)
+ground_curve = 0.022974
+
+[sub_resource type="Sky" id="Sky_f7k5k"]
+sky_material = SubResource("ProceduralSkyMaterial_8h5tf")
+
+[sub_resource type="Environment" id="Environment_jrhwq"]
+background_mode = 2
+background_color = Color(0.623529, 0.909804, 0.988235, 1)
+sky = SubResource("Sky_f7k5k")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+glow_intensity = 4.6
+fog_enabled = true
+fog_light_color = Color(0.952941, 0.956863, 0.964706, 1)
+fog_sky_affect = 0.0
+volumetric_fog_emission = Color(0.827451, 0.631373, 0.533333, 1)
+volumetric_fog_length = 5.5
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_paep8"]
+dof_blur_far_enabled = true
+dof_blur_far_distance = 50.82
+dof_blur_amount = 0.06
+
+[sub_resource type="Resource" id="Resource_5d6oo"]
+script = ExtResource("4_nuf45")
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+fov = 60.0
+
+[node name="Node3D" type="Node3D"]
+
+[node name="CharacterController" parent="." node_paths=PackedStringArray("pcam") instance=ExtResource("1_icwvb")]
+pcam = NodePath("../PhantomCamera3D")
+
+[node name="building" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00603104, -16.2521, -24.9827)
+use_collision = true
+size = Vector3(3, 50.28, 3)
+
+[node name="floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, -3, 2.08165e-12)
+use_collision = true
+size = Vector3(75, 1, 25)
+
+[node name="building2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -15.8579, -3.8147e-06, -53.16)
+use_collision = true
+size = Vector3(3, 32.28, 3)
+
+[node name="floor2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40.8579, 10.962, -53.16)
+use_collision = true
+size = Vector3(25, 1, 25)
+
+[node name="building3" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0542011, 0, -79.8676)
+use_collision = true
+size = Vector3(3, 32.06, 3)
+
+[node name="floor3" type="CSGBox3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0541973, -5.78132, -104.868)
+use_collision = true
+size = Vector3(25, 1, 25)
+
+[node name="building4" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 15.8037, -3.8147e-06, -51.7076)
+use_collision = true
+size = Vector3(3, 34.28, 3)
+
+[node name="building5" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -23.5415, -7.6294e-06, 6.11457)
+use_collision = true
+size = Vector3(3, 34.28, 3)
+
+[node name="building6" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, -6.78004, -1.14441e-05, -3.22656)
+use_collision = true
+size = Vector3(3, 34.28, 3)
+
+[node name="building7" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 11.5105, -1.14441e-05, 9.15686)
+use_collision = true
+size = Vector3(3, 34.28, 3)
+
+[node name="building8" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 24.6548, -1.52588e-05, -2.10209)
+use_collision = true
+size = Vector3(3, 34.28, 3)
+
+[node name="floor4" type="CSGBox3D" parent="."]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 40.8037, -11.8502, -51.7076)
+use_collision = true
+size = Vector3(25, 1, 25)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jrhwq")
+camera_attributes = SubResource("CameraAttributesPractical_paep8")
+
+[node name="main" type="Camera3D" parent="."]
+transform = Transform3D(1, 3.70171e-14, 7.45852e-14, 0, 0.895746, -0.444564, -8.3266e-14, 0.444564, 0.895746, 2.37999e-12, -0.678256, 3.58298)
+fov = 60.0
+
+[node name="PhantomCameraHost" type="Node" parent="main"]
+script = ExtResource("2_15ch8")
+
+[node name="PhantomCamera3D" type="Node3D" parent="."]
+transform = Transform3D(1, 3.70171e-14, 7.45852e-14, 0, 0.895746, -0.444564, -8.3266e-14, 0.444564, 0.895746, 2.37999e-12, -0.678256, 3.58298)
+script = ExtResource("3_tjfsr")
+priority_override = false
+priority = 0
+follow_mode = 6
+follow_target = NodePath("../CharacterController")
+follow_parameters/spring_arm/spring_length = 4.0
+follow_parameters/spring_arm/collision_mask = 1
+follow_parameters/spring_arm/shape = null
+follow_parameters/spring_arm/margin = 0.01
+follow_parameters/target_offset = Vector3(2.08165e-12, 1.1, 2.08165e-12)
+follow_parameters/damping = false
+look_at_mode = 0
+tween_parameters = null
+tween_on_load = false
+inactive_update_mode = 0
+camera_3D_resource = SubResource("Resource_5d6oo")
